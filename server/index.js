@@ -3,6 +3,7 @@ const http = require('http');
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
+const router = express.Router();
 require("dotenv").config();
 connectDB();
 const authRoutes = require("./routes/auth");
@@ -29,6 +30,9 @@ app.use("/uploads",express.static(path.join(__dirname,"uploads")));
   app.use("/api/chat", chatRoutes);
   app.use("/api/message", messageRoutes);
   app.use("/api/request", requestRoutes);
+  app.use("/",router.get("/", (req, res) => {
+    res.send({ response: "Server is up and running." }).status(200);
+  }))
 
 
 
