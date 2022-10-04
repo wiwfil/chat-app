@@ -72,3 +72,4 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
+server.listen(process.env.PORT || 5000, () => console.log(`Server has started.`));

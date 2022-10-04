@@ -106,13 +106,18 @@ function SideDrawer({ setFetchAgain, fetchAgain }) {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(`${API}/api/request/recipient`, config);
-      const reqs = await axios.get(`${API}/api/request/requester`, config);
-      setInactiveRequests(reqs.data.unansweredRequests);
-      setNotificationCount(
-        data.filter((req) => req.status === "pending").length
-      );
-      setRequests(data);
+      try{
+        const { data } = await axios.get(`${API}/api/request/recipient`, config);
+        const reqs = await axios.get(`${API}/api/request/requester`, config);
+        setInactiveRequests(reqs.data.unansweredRequests);
+        setNotificationCount(
+          data.filter((req) => req.status === "pending").length
+        );
+        setRequests(data);
+      }catch (error) {
+        console.log(error)
+      }
+    
     };
     fetchRequests();
   }, [stateChange]);
