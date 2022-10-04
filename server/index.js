@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require('http');
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
@@ -30,34 +31,14 @@ app.use("/uploads",express.static(path.join(__dirname,"uploads")));
   app.use("/api/request", requestRoutes);
 
 
-  const __dirname1 = path.resolve();
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/client/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running..");
-  });
-}
 
 app.use(notFound);
 app.use(errorHandler);
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
-);
+const server = http.createServer(app);
 
 
-const io = socket(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    credentials: true,
-  },
-});
+const io = socket(server)
 
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
