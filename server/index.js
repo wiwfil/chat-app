@@ -50,6 +50,7 @@ const io = require("socket.io")(server, {
   cors: {
 
     credentials: true,
+    transports: ["websocket"]
   },
 });
 io.origins('*:*')
