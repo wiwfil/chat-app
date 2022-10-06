@@ -75,7 +75,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/chat/rename`,
+        `${API}/api/chat/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -85,6 +85,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
       setSelectedChat(data);
       setFetchAgain(!fetchAgain);
       setRenameLoading(false);
+      onClose();
     } catch (error) {
       toast({
         title: "Error Occured!",

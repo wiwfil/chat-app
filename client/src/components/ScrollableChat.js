@@ -14,6 +14,7 @@ const ScrollableChat = ({ messages }) => {
 
   return (
     <div key={messages}>
+
       {messages !== [] &&
         messages.map((m, i) => (
           <div style={{ display: "flex" }} key={m._id}>
@@ -57,6 +58,7 @@ const ScrollableChat = ({ messages }) => {
 
           </div>
         ))}
+
     </div>
   );
 };

@@ -11,7 +11,7 @@ import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "lottie-react";
 import animationData from "../animations/typing.json";
-
+import ScrollToBottom from 'react-scroll-to-bottom';
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -63,7 +63,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
       socket.emit("join chat", selectedChat._id);
     } catch (error) {
-    console.log(error);
       toast({
         title: "Error Occured!",
         description: "Failed to Load the Messages",
@@ -94,7 +93,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         socket.emit("new message", data);
         setMessages([...messages, data]);
       } catch (error) {
-        console.log(error);
         toast({
           title: "Error Occured!",
           description: "Failed to send the Message",
@@ -109,7 +107,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
   useEffect(() => {
     socket = io(API);
-    console.log(API)
     socket.emit("setup", user);
     socket.on("connected", () => setSocketConnected(true));
     socket.on("typing", () => setIsTyping(true));
@@ -221,9 +218,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 margin="auto"
               />
             ) : (
-              <div className="messages">
+              <ScrollToBottom className="messages">
                 <ScrollableChat messages={messages} />
-              </div>
+              </ScrollToBottom>
             )}
 
             <FormControl
