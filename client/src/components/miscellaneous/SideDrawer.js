@@ -152,7 +152,7 @@ function SideDrawer({ setFetchAgain, fetchAgain }) {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
+        <Text fontSize="3xl" fontFamily="Work sans">
         Chatters
         </Text>
         <div className="menu-right">
