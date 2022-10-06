@@ -36,7 +36,7 @@ function Homepage() {
         borderWidth="1px"
       >
         <Text fontSize="4xl" fontFamily="Work sans" color={"#FFC857"} bg={"#114B5F"}>
-          Talk-A-Tive
+        Chatters
         </Text>
       </Box>
       <Box color={"#FFC857"} w="100%" p={4} borderRadius="lg" borderWidth="1px" bg={"#114B5F"}>

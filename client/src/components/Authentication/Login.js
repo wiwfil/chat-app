@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const API = process.env.REACT_APP_API_URL;
+  console.log(API)
 
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);

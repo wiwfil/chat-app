@@ -153,18 +153,19 @@ function SideDrawer({ setFetchAgain, fetchAgain }) {
           </Button>
         </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
-          Talk-A-Tive
+        Chatters
         </Text>
         <div className="menu-right">
           <Menu>
-            <MenuButton p={1}>
-              <div type="button" className="icon-button">
-                <IconButton
-                  fontSize="24"
+            <MenuButton p={1} as={IconButton}         fontSize="24"
                   color={"#FFC857"}
-                  bg={"#114B5F"}
-                  icon={<BellIcon />}
-                />
+                  bg={"#114B5F"} 
+                  _hover={{ bg: 'none' }}
+                  _expanded={{ bg: 'none' }}
+                  _focus={{ boxShadow: 'none',bg:"none" }}
+                  icon={<BellIcon />}>
+              <div  className="icon-button">
+        
                 {notificationCount > 0 && (
                   <span className="icon-button__badge">
                     {notificationCount}
