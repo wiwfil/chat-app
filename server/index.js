@@ -21,7 +21,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
-app.use(cors({ origin: "*",}));
+app.use(cors());
 app.use(express.json());
 
 app.use("/uploads",express.static(path.join(__dirname,"uploads")));
@@ -49,7 +49,6 @@ const io = require("socket.io")(server, {
     transports: ['websocket'] 
   },
 });
-io.origins('*:*')
 
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
