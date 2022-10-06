@@ -23,7 +23,8 @@ const InviteListItem = ({
     const recipientReqs = requests.filter(
       (request) => request.recipient === user_m._id
     );
-    if (recipientReqs.length > 0 || user.contacts?.includes(user_m._id)) {
+    console.log(user)
+    if (recipientReqs.length > 0 || (user.contacts && user.contacts.includes(user_m._id))) {
       setDisabled(true);
     }
   }, []);

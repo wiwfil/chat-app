@@ -58,6 +58,7 @@ const Signup = () => {
           email,
           password,
           pic,
+          contacts:[]
         },
         config
       );

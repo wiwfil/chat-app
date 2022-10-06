@@ -187,6 +187,7 @@ const ProfileModal = ({ userProfile, children }) => {
             <Image
               borderRadius="full"
               boxSize="150px"
+              objectFit='cover'
               src={userProfile.pic}
               alt={userProfile.name}
             />

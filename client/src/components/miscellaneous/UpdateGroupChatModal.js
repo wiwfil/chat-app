@@ -45,7 +45,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
-      };
+      }
       const { data } = await axios.get(
         `${API}/api/auth/friends?search=${query}`,
         config

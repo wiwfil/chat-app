@@ -157,22 +157,25 @@ function SideDrawer({ setFetchAgain, fetchAgain }) {
         </Text>
         <div className="menu-right">
           <Menu>
-            <MenuButton p={1} as={IconButton}         fontSize="24"
+            <div className="icon-button">
+            <MenuButton p={1} as={IconButton} fontSize="24"
                   color={"#FFC857"}
                   bg={"#114B5F"} 
                   _hover={{ bg: 'none' }}
                   _expanded={{ bg: 'none' }}
                   _focus={{ boxShadow: 'none',bg:"none" }}
+                  aria-label='Call Sage'
                   icon={<BellIcon />}>
-              <div  className="icon-button">
-        
-                {notificationCount > 0 && (
-                  <span className="icon-button__badge">
-                    {notificationCount}
-                  </span>
-                )}
-              </div>
+                    
+   
+
+
             </MenuButton>
+                  {notificationCount>0 && <span className="icon-button__badge">
+                    {notificationCount}
+                  </span>}
+            </div>
+            
             <MenuList color={"#114B5F"} bg={"#FFC857"} pl={2}>
               {notificationCount === 0 && "No New Requests"}
               {requests
