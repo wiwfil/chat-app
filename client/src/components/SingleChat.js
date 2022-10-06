@@ -85,20 +85,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             Authorization: `Bearer ${user.token}`,
           },
         };
-        const formData = new FormData();
-        const file = new File([], "null");
-        formData.append("file", file);
-        formData.append("content", newMessage);
-        formData.append("chatId", selectedChat._id);
+
         setNewMessage("");
         const { data } = await axios.post(
           `${API}/api/message`,
-          formData,
+          {content:newMessage,chatId:selectedChat._id},
           config
         );
         socket.emit("new message", data);
         setMessages([...messages, data]);
       } catch (error) {
+        console.log(error);
         toast({
           title: "Error Occured!",
           description: "Failed to send the Message",
