@@ -21,11 +21,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
-app.use(cors({
-  optionsSuccessStatus: 200, // For legacy browser support
-    credentials: true, // This is important.
-    origin: "https://vagadrea-chat-app.netlify.app",
-}));
+app.use(cors({ origin: "*",}));
 app.use(express.json());
 
 app.use("/uploads",express.static(path.join(__dirname,"uploads")));
